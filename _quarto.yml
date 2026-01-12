@@ -4,7 +4,12 @@ project:
 website:
   title: "ISSS608-VAA"
   navbar:
-    left:
+    left: 
+    - text: "Hands-on Exercise 1"
+      menu: 
+        - text: "Hands On Exercise 1"
+          href: "Hands-on-Ex/Hands-on_Ex01/Hands-on_Ex01.html"
+    right: 
       - href: index.qmd
         text: Home
       - about.qmd
@@ -13,7 +18,7 @@ format:
   html:
     theme:
       - cosmo
-      - brand
+      - pulse
     css: styles.css
     toc: true
 
