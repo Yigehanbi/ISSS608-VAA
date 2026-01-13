@@ -13,13 +13,13 @@ The Code Chunk Below Uses p_load() of pacman to check if tidyverse packages are 
 pacman::p_load(tidyverse)
 ```
 
-## Importing the data
+## Importing Data
 
 ```{r}
 exam_data <- read_csv("data/Exam_data.csv")
 ```
 
-# Plotting a simple bar chart
+# Bar Chart
 
 ```{r}
 #| echo: false
