@@ -7,13 +7,6 @@
     "text": "Welcome to ISSS608 - Visual Analytics and Application Homepage.\nIn this website, you will find my coursework prepared for this course."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
     "objectID": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html",
     "href": "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html",
     "title": "Hands-on_Ex01",
@@ -138,5 +131,12 @@
     "title": "Hands-on_Ex01",
     "section": "Theme Minimal",
     "text": "Theme Minimal\n\nggplot(data = exam_data,\n       aes(x = RACE)) + \n  geom_bar() +\n  coord_flip() +\n  theme_minimal()"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   }
 ]
