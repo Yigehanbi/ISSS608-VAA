@@ -170,6 +170,7 @@ ggplot(data = exam_data,
 ```
 
 ## Addming Best Fit Curve for SCatter plot
+
 ```{r}
 ggplot(data = exam_data,
        aes(x = MATHS,
@@ -177,6 +178,7 @@ ggplot(data = exam_data,
   geom_point() + 
   geom_smooth(size = 0.5)
 ```
+
 ```{r}
 ggplot(data = exam_data,
        aes(x = MATHS,
@@ -186,7 +188,6 @@ ggplot(data = exam_data,
               linewidth = 0.5)
 ```
 
-
 # Working with facet_warp()
 
 ```{r}
@@ -195,6 +196,7 @@ ggplot(data = exam_data,
   geom_histogram(bins = 20) +
   facet_wrap(~ CLASS)
 ```
+
 ## facet_grid()
 
 ```{r}
@@ -215,7 +217,6 @@ ggplot(data = exam_data,
   coord_flip()
 ```
 
-
 ### fixing x and y range using coord_cartesian()
 
 ```{r}
@@ -229,8 +230,7 @@ ggplot(data = exam_data,
                   ylim = c(0,100))
 ```
 
-
-# Working With Theme - [Background Colour] | [Font Size] | [Grid Lines] | [Label Colours]
+# Working With Theme - \[Background Colour\] \| \[Font Size\] \| \[Grid Lines\] \| \[Label Colours\]
 
 ## theme_gray()
 
@@ -241,7 +241,6 @@ ggplot(data = exam_data,
   coord_flip() +
   theme_gray()
 ```
-
 
 ## theme_classic()
 

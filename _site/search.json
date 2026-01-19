@@ -138,5 +138,40 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html",
+    "title": "Hands-on_Ex02",
+    "section": "",
+    "text": "pacman::p_load(ggrepel, patchwork, \n               ggthemes, tidyverse)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#checking-required-packages",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#checking-required-packages",
+    "title": "Hands-on_Ex02",
+    "section": "",
+    "text": "pacman::p_load(ggrepel, patchwork, \n               ggthemes, tidyverse)"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#data-loading",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#data-loading",
+    "title": "Hands-on_Ex02",
+    "section": "Data Loading",
+    "text": "Data Loading\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\nRows: 322 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): ID, CLASS, GENDER, RACE\ndbl (3): ENGLISH, MATHS, SCIENCE\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#beyond-ggplot2-annotation-ggrepel",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#beyond-ggplot2-annotation-ggrepel",
+    "title": "Hands-on_Ex02",
+    "section": "Beyond ggplot2 Annotation : ggrepel",
+    "text": "Beyond ggplot2 Annotation : ggrepel\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#from-here-onwards-are-testing-and-others-etc",
+    "href": "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html#from-here-onwards-are-testing-and-others-etc",
+    "title": "Hands-on_Ex02",
+    "section": "From here onwards are Testing and others etc…",
+    "text": "From here onwards are Testing and others etc…\n\nlibrary(ggplot2)\n\ndf &lt;- data.frame(\n  x = c(1, 1.05, 1.1),\n  y = c(1, 1.05, 1.1),\n  lab = c(\"A\", \"B\", \"C\")\n)\n\nggplot(df, aes(x, y, label = lab)) +\n  geom_point(size = 3) +\n  geom_label()\n\n\n\n\n\n\n\n\n\nlibrary(ggrepel)\n\nggplot(df, aes(x, y, label = lab)) +\n  geom_point(size = 3) +\n  geom_label_repel()\n\n\n\n\n\n\n\n\n\nset.seed(123)\ndf2 &lt;- data.frame(\n  x = rnorm(50, 0, 0.05),\n  y = rnorm(50, 0, 0.05),\n  lab = paste0(\"P\", 1:50)\n)\n\nggplot(df2, aes(x, y, label = lab)) +\n  geom_point() +\n  geom_label_repel()"
   }
 ]
