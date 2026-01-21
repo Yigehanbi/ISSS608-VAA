@@ -20,6 +20,8 @@ exam_data <- read_csv("data/Exam_data.csv")
 
 ## 2.0 Beyond ggplot2 Annotation : ggrepel
 
+One of the challenge in plotting statistical graph is annotation, espacially with alrge number of data points
+
 ::: panel-tabset
 ## Plot
 
@@ -61,6 +63,10 @@ ggplot(data = exam_data,
   ggtitle("English Score versus Maths Scores For Primary 3")
 ```
 :::
+
+[ggrepel](https://ggrepel.slowkow.com/) is an extentsion of ggplot2 package which rpvoide `geoms` for **ggplot2** to repel overlapping text as in our examples of the right. \
+
+We simply replace `geom_text()` by [geom-text_repel()](https://ggrepel.slowkow.com/reference/geom_text_repel.html) and `geom_label` by [geom_label_repel](https://ggrepel.slowkow.com/reference/geom_text_repel.html).
 
 ### 2.0.1 Working With Repel
 
@@ -108,6 +114,7 @@ ggplot(data = exam_data,
 
 ## 2.1 Beyond ggplot2 themes
 
+ggplot2 comes with eight [built-in themes](https://ggplot2.tidyverse.org/reference/ggtheme.html), they are: `theme_grey()`, `theme_bw()`, `theme_classic()`, `theme_dark()`, `theme_light()`, `theme_linedraw()`, `theme_minimal()` and `theem_void()`
 ::: panel-tabset
 
 ## Plot
@@ -143,7 +150,13 @@ ggplot(data = exam_data,
 ```
 :::
 
+Refer to this [link](https://ggplot2.tidyverse.org/reference/index.html#themes) to learn more about ggplot2 `Themes`.
+
 ### 2.1.1 Working With ggtheme Package
+
+**[ggthemes](https://cran.r-project.org/web/packages/ggthemes/index.html)** provides ['ggplot2' themes](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) that replicate the look of plots by Edwards Tufte, Stephen Few, [FiveTthirthyeight](https://fivethirtyeight.com/), [The Economist](https://www.economist.com/graphic-detail), 'Stata', 'Excel' and [The Wall Street Journal](https://www.pinterest.com/wsjgraphics/wsj-graphics/), among the others.
+
+In the example below, The *Economist* Theme is Used/
 
 ::: panel-tabset
 ## Plot
@@ -282,7 +295,8 @@ p1 <- ggplot(data = exam_data,
                  color = 'grey25',
                  fill = 'grey90') +
   coord_cartesian(xlim = c(0,100)) +
-  ggtitle('Distribution of Math Scores')
+  ggtitle('Distribution of Math Scores')+
+  theme(plot.title = element_text(size = 10))
 p1
 
 ```
@@ -300,7 +314,8 @@ p1 <- ggplot(data = exam_data,
                  color = 'grey25',
                  fill = 'grey90') +
   coord_cartesian(xlim = c(0,100)) +
-  ggtitle('Distribution of Math Scores')
+  ggtitle('Distribution of Math Scores')+
+  theme(plot.title = element_text(size = 10))
 p1
 
 ```
@@ -323,7 +338,8 @@ p2 <- ggplot(data = exam_data,
                  color = 'grey25',
                  fill = 'grey90') +
   coord_cartesian(xlim = c(0,100)) +
-  ggtitle('Distribution of English Scores')
+  ggtitle('Distribution of English Scores')+
+  theme(plot.title = element_text(size = 10))
 p2
 
 ```
@@ -341,7 +357,8 @@ p2 <- ggplot(data = exam_data,
                  color = 'grey25',
                  fill = 'grey90') +
   coord_cartesian(xlim = c(0,100)) +
-  ggtitle('Distribution of English Scores')
+  ggtitle('Distribution of English Scores')+
+  theme(plot.title = element_text(size = 10))
 p2
 
 ```
@@ -365,7 +382,8 @@ p3 <- ggplot(data = exam_data,
               size = 0.5) +
   coord_cartesian(xlim = c(0,100),
                   ylim = c(0,100)) +
-  ggtitle(' English VS Math Scores - Primary 3')
+  ggtitle('English VS Math Scores') +
+  theme(plot.title = element_text(size = 10))
 p3
 
 ```
@@ -384,7 +402,8 @@ p3 <- ggplot(data = exam_data,
               size = 0.5) +
   coord_cartesian(xlim = c(0,100),
                   ylim = c(0,100)) +
-  ggtitle(' English VS Math Scores - Primary 3')
+  ggtitle('English VS Math Scores')+
+  theme(plot.title = element_text(size = 10))
 p3
 
 ```
@@ -533,7 +552,7 @@ Figure below is created by combining patchwork and theme_economist() of ggthemes
 #| echo: false
 #| message: false
 #| warning: false
-patchwork <- (p1 / p2) | p3
+patchwork <- (p1 / p2) | p3 
 patchwork & theme_economist()
 
 ```
