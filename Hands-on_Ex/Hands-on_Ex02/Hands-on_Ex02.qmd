@@ -382,7 +382,7 @@ p3 <- ggplot(data = exam_data,
               size = 0.5) +
   coord_cartesian(xlim = c(0,100),
                   ylim = c(0,100)) +
-  ggtitle('English VS Math Scores') +
+  ggtitle('English VS Math Scores Primary 3') +
   theme(plot.title = element_text(size = 10))
 p3
 
@@ -402,7 +402,7 @@ p3 <- ggplot(data = exam_data,
               size = 0.5) +
   coord_cartesian(xlim = c(0,100),
                   ylim = c(0,100)) +
-  ggtitle('English VS Math Scores')+
+  ggtitle('English VS Math Scores For Primary 3')+
   theme(plot.title = element_text(size = 10))
 p3
 
@@ -553,7 +553,8 @@ Figure below is created by combining patchwork and theme_economist() of ggthemes
 #| message: false
 #| warning: false
 patchwork <- (p1 / p2) | p3 
-patchwork & theme_economist()
+patchwork & theme_economist(base_size = 7) +
+  theme(plot.title = element_text(size = 7))
 
 ```
 
@@ -564,7 +565,8 @@ patchwork & theme_economist()
 #| message: false
 #| warning: false
 patchwork <- (p1 / p2) | p3
-patchwork & theme_economist()
+patchwork & theme_economist(base_size = 7) +
+  theme(plot.title = element_text(size = 7))
 
 ```
 
