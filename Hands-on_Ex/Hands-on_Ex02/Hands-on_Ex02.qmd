@@ -382,7 +382,7 @@ p3 <- ggplot(data = exam_data,
               size = 0.5) +
   coord_cartesian(xlim = c(0,100),
                   ylim = c(0,100)) +
-  ggtitle('English VS Math Scores Primary 3') +
+  ggtitle('English VS Math Scores For Primary 3') +
   theme(plot.title = element_text(size = 10))
 p3
 
