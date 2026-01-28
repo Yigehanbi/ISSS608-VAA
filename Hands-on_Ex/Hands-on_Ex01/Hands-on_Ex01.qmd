@@ -1,5 +1,5 @@
 ---
-title: "Hands-on_Ex01"
+title: "Hands On Exercise 1"
 author: "Xi Zixun"
 ---
 

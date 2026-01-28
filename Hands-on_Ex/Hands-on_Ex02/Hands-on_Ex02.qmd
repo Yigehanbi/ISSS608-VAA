@@ -1,5 +1,5 @@
 ---
-title: "Hands-on_Ex02"
+title: "Hands On Exercise 2"
 author: "Xi Zixun"
 ---
 
@@ -64,7 +64,7 @@ ggplot(data = exam_data,
 ```
 :::
 
-[ggrepel](https://ggrepel.slowkow.com/) is an extentsion of ggplot2 package which rpvoide `geoms` for **ggplot2** to repel overlapping text as in our examples of the right. \
+[ggrepel](https://ggrepel.slowkow.com/) is an extentsion of ggplot2 package which rpvoide `geoms` for **ggplot2** to repel overlapping text as in our examples of the right.\
 
 We simply replace `geom_text()` by [geom-text_repel()](https://ggrepel.slowkow.com/reference/geom_text_repel.html) and `geom_label` by [geom_label_repel](https://ggrepel.slowkow.com/reference/geom_text_repel.html).
 
@@ -114,9 +114,8 @@ ggplot(data = exam_data,
 
 ## 2.1 Beyond ggplot2 themes
 
-ggplot2 comes with eight [built-in themes](https://ggplot2.tidyverse.org/reference/ggtheme.html), they are: `theme_grey()`, `theme_bw()`, `theme_classic()`, `theme_dark()`, `theme_light()`, `theme_linedraw()`, `theme_minimal()` and `theem_void()`
+ggplot2 comes with eight [built-in themes](https://ggplot2.tidyverse.org/reference/ggtheme.html), they are: `theme_grey()`, `theme_bw()`, `theme_classic()`, `theme_dark()`, `theme_light()`, `theme_linedraw()`, `theme_minimal()` and `theem_void()` ::: panel-tabset
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -148,13 +147,14 @@ ggplot(data = exam_data,
   theme_gray() +
   ggtitle("Distributon of Math Scores")
 ```
+
 :::
 
 Refer to this [link](https://ggplot2.tidyverse.org/reference/index.html#themes) to learn more about ggplot2 `Themes`.
 
 ### 2.1.1 Working With ggtheme Package
 
-**[ggthemes](https://cran.r-project.org/web/packages/ggthemes/index.html)** provides ['ggplot2' themes](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) that replicate the look of plots by Edwards Tufte, Stephen Few, [FiveTthirthyeight](https://fivethirtyeight.com/), [The Economist](https://www.economist.com/graphic-detail), 'Stata', 'Excel' and [The Wall Street Journal](https://www.pinterest.com/wsjgraphics/wsj-graphics/), among the others.
+[**ggthemes**](https://cran.r-project.org/web/packages/ggthemes/index.html) provides ['ggplot2' themes](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) that replicate the look of plots by Edwards Tufte, Stephen Few, [FiveTthirthyeight](https://fivethirtyeight.com/), [The Economist](https://www.economist.com/graphic-detail), 'Stata', 'Excel' and [The Wall Street Journal](https://www.pinterest.com/wsjgraphics/wsj-graphics/), among the others.
 
 In the example below, The *Economist* Theme is Used/
 
@@ -191,6 +191,7 @@ ggplot(data = exam_data,
   theme_economist()
 ```
 :::
+
 It also provide some extra geoms and scales for '**gglot2**'.
 
 ### 2.1.2 Working with hrbrtheems Package
@@ -235,7 +236,6 @@ ggplot(data=exam_data,
 The second goal centers around productivity for a production workflow. In face, this '**production workflow**' is the context for where the elements of **hrbrthemes** could be used.
 
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -273,7 +273,6 @@ ggplot(data = exam_data,
               grid = 'Y')
 
 ```
-
 :::
 
 ## 2.2 Beyond Single Graph
@@ -281,7 +280,6 @@ ggplot(data = exam_data,
 It is not unusual that multiple graphs are required to tell a compelling visual story. There are several ggplot2 extensions provide functions to compose figure with multiple graph. In this section we will learn how to create composite plot by combining multiple graphs. First, let us create three statistical graphics by using the code chunk below
 
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -324,7 +322,6 @@ p1
 Next
 
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -364,10 +361,9 @@ p2
 ```
 :::
 
-Lastly, draw a **Scatter Plot** for English vs Math Score as shown below 
+Lastly, draw a **Scatter Plot** for English vs Math Score as shown below
 
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -411,22 +407,20 @@ p3
 
 ### 2.2.1 Creating Composite Graphics: Pathwork Method
 
-There are several ggplot2 extension's functions support the needs to prepare composite figure by combining several graphs such as grid_arrange() of **gridExtra** package and plot_grid() of **cowplot** package.  In this section we are going to shared about ggplot2 extension call **patchwork** which is specially designed for combining separate ggplot2 graphs into a single figure.
+There are several ggplot2 extension's functions support the needs to prepare composite figure by combining several graphs such as grid_arrange() of **gridExtra** package and plot_grid() of **cowplot** package. In this section we are going to shared about ggplot2 extension call **patchwork** which is specially designed for combining separate ggplot2 graphs into a single figure.
 
 Patchwork packages has very simple syntax where we can create layouts super easily. Here are the general syntax that combines:
 
-  · Two-Column Layout using Plus Sign `+` \
-  · Parenthesis() to create a subplot group. \
-  · Two-Row Layout using the Division Sing `/` \
-  
-  
+· Two-Column Layout using Plus Sign `+`\
+· Parenthesis() to create a subplot group.\
+· Two-Row Layout using the Division Sing `/`\
+
 ### 2.2.2 Combining Two ggplot2 graphs
 
-Figure in the tabset below wos a compsite of two histogram created using patchwork. \
+Figure in the tabset below wos a compsite of two histogram created using patchwork.\
 Note how simple the syntax used to create the plot!
 
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -444,21 +438,19 @@ p1 + p2
 #| warning: false
 p1 + p2
 ```
-
 :::
-
 
 ### 2.2.3 Combining Three ggplot2 graphs
 
 We can plot more complex composite by using appropriate operators. For example, the composite figure below is plotted by using:
 
-  · `/` operator to stack two ggplot2 graphs \
-  · `|` operator to place the plots beside each other \
-  · `()` operator to define the sequence of the plotting \
-  
-  
+· `/` operator to stack two ggplot2 graphs\
+· `|` operator to place the plots beside each other\
+· `()` operator to define the sequence of the plotting\
+
 ::: panel-tabset
 ## Plot
+
 ```{r}
 #| echo: false
 #| message: false
@@ -481,7 +473,6 @@ We can plot more complex composite by using appropriate operators. For example, 
 In order to identify subplot in text, **patchwork** also provides auto-tagging capabilities as shown in the figure below.
 
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -503,15 +494,14 @@ In order to identify subplot in text, **patchwork** also provides auto-tagging c
   plot_annotation(tag_levels = 'I')
 
 ```
-
 :::
-  
+
 ### 2.2.5 Creating Figure with insert
-Beside providing functions to place plots next to each other based on the provided layouts. \
-With ```inset_element()``` of **patchwork**, we can place on or several plots or graphic elements freely on top or bloe another plot.
+
+Beside providing functions to place plots next to each other based on the provided layouts.\
+With `inset_element()` of **patchwork**, we can place on or several plots or graphic elements freely on top or bloe another plot.
 
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -525,7 +515,6 @@ p3 + inset_element(p2,
                    top = 1)
 ```
 
-
 ## Code
 
 ```{r}
@@ -538,14 +527,13 @@ p3 + inset_element(p2,
                    right = 0.5,
                    top = 1)
 ```
-
 :::
 
 ### 2.2.6 Creating a composite figure by using patchwork & ggtheme
+
 Figure below is created by combining patchwork and theme_economist() of ggthemes package discussed earlier.
 
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -569,15 +557,14 @@ patchwork & theme_economist(base_size = 7) +
   theme(plot.title = element_text(size = 7))
 
 ```
-
 :::
 
 ## 2.3 Reference
 
-  · [Patchwork Rpackage goes nerd viral](https://www.littlemissdata.com/blog/patchwork) \
-  · [ggrepel](https://ggrepel.slowkow.com/) \
-  · [ggthemes](https://ggplot2.tidyverse.org/reference/ggtheme.html) \
-  · [hrbrthemes](https://cinc.rud.is/web/packages/hrbrthemes/) \
-  · [ggplot tips: Arranging Plots](https://albert-rapp.de/post/2021-10-28-extend-plot-variety/) \
-  · [ggplot2 Theme Elements Demonstration](https://henrywang.nl/ggplot2-theme-elements-demonstration/) \
-  · [ggplot2 Theme Elements Reference Sheet](https://isabella-b.com/blog/ggplot2-theme-elements-reference/) \
+· [Patchwork Rpackage goes nerd viral](https://www.littlemissdata.com/blog/patchwork)\
+· [ggrepel](https://ggrepel.slowkow.com/)\
+· [ggthemes](https://ggplot2.tidyverse.org/reference/ggtheme.html)\
+· [hrbrthemes](https://cinc.rud.is/web/packages/hrbrthemes/)\
+· [ggplot tips: Arranging Plots](https://albert-rapp.de/post/2021-10-28-extend-plot-variety/)\
+· [ggplot2 Theme Elements Demonstration](https://henrywang.nl/ggplot2-theme-elements-demonstration/)\
+· [ggplot2 Theme Elements Reference Sheet](https://isabella-b.com/blog/ggplot2-theme-elements-reference/)\
