@@ -2,29 +2,95 @@ project:
   type: website
 
 website:
-  title: "ISSS608-VAA"
-  navbar:
-    left: 
-    - text: "Hands On Exerecise"
-      menu: 
-        - text: "Hands On Exercise 1"
-          href: "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html"
-        - text: "Hands On Exercise 2"
-          href: "Hands-on_Ex/Hands-On_Ex02/Hands-on_Ex02.html"
-        - text: "Hands On Exercise 3"
-          href: "Hands-on_Ex/Hands-On_Ex03/Hands-on_Ex03.html"
-    right: 
-      - href: index.qmd
-        text: Home
-      - about.qmd
-
-format:
+  title: "ISSS608 - VAA"
+  sidebar:
+    tools: 
+      - icon: house-fill
+        href: "index.qmd"
+      - icon: book
+        href: "about.qmd"
+    style: "docked"
+    search: true
+    contents:
+      - text: "Home"
+        href: introduction.qmd
+      - section: "Hands On Exercise"
+        contents:
+          - text: "Hands On Exercise 1"
+            href: "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html"
+          - text: "Hands On Exercise 2"
+            href: "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html"
+          - text: "Hands On Exercise 3 Part A"
+            href: "Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html"
+          - text: "Hands On Exercise 3 Part B"
+            href: "Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex3B.html"
+      - section: "Lesson Note"
+        contents:
+          - text: "TBC"
+      
+      
+format: 
   html:
-    theme:
-      - cosmo
-      - pulse
-    css: styles.css
     toc: true
-
-editor: visual
+    include-after-body:
+      - text: |
+          <style>
+            .sparkle {
+              position: absolute;
+              pointer-events: none;
+              background: radial-gradient(circle, #ffffff 0%, #ffd700 40%, transparent 70%);
+              border-radius: 50%;
+              transform: translate(-50%, -50%);
+              opacity: 0.9;
+              animation: sparkle-fade 0.45s linear forwards;
+              z-index: 9999;
+            }
+          
+            @keyframes sparkle-fade {
+              0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.9;
+              }
+              100% {
+                transform: translate(-50%, -50%) scale(1.4);
+                opacity: 0;
+              }
+            }
+          </style>
+          
+          <script>
+            (() => {
+              if ("ontouchstart" in window) return;
+              if (window.matchMedia("(prefers-reduced-motion)").matches) return;
+          
+              let lastTime = 0;
+          
+              document.addEventListener("mousemove", (e) => {
+                const now = performance.now();
+                if (now - lastTime < 18) return; // much faster response
+                lastTime = now;
+          
+                const sparkle = document.createElement("div");
+                sparkle.className = "sparkle";
+                sparkke.style = "img/"
+                sparkle.style.left = e.pageX + "px";
+                sparkle.style.top = e.pageY + "px";
+          
+                const size = Math.random() * 4 + 3; // smaller = sharper
+                sparkle.style.width = size + "px";
+                sparkle.style.height = size + "px";
+          
+                const colors = ["#5050EB", "#6767CF"];
+                sparkle.style.background =
+                  colors[Math.floor(Math.random() * colors.length)];
+          
+                document.body.appendChild(sparkle);
+          
+                // remove faster
+                setTimeout(() => sparkle.remove(), 450);
+              });
+            })();
+          </script>
+          
+          
 

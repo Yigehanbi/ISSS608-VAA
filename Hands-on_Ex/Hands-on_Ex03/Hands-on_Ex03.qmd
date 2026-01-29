@@ -848,7 +848,7 @@ This link provides online version of the reference guide and several useful arti
 
 -   A collection of plotly R graphs are available via this [link](https://plotly.com/r/).
 
--    Carson Sievert (2020) **Interactive web-based data visualization with R, plotly, and shiny**, Chapman and Hall/CRC is the best resource to learn plotly for R. The online version is available via this [link](https://plotly-r.com/)
+-   Carson Sievert (2020) **Interactive web-based data visualization with R, plotly, and shiny**, Chapman and Hall/CRC is the best resource to learn plotly for R. The online version is available via this [link](https://plotly-r.com/)
 
 -   [Plotly R Figure Reference](https://plotly.com/r/reference/index/) provides a comprehensive discussion of each visual representations.
 
