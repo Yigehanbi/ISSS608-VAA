@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../introduction.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
@@ -206,7 +206,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a>
+  <ul class="collapse">
+  <li><a href="#install-and-launching-r-packages" id="toc-install-and-launching-r-packages" class="nav-link" data-scroll-target="#install-and-launching-r-packages">Install And Launching R Packages</a></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing Data</a></li>
+  <li><a href="#bar-chart" id="toc-bar-chart" class="nav-link" data-scroll-target="#bar-chart">Bar Chart</a></li>
+  <li><a href="#dot-plot" id="toc-dot-plot" class="nav-link" data-scroll-target="#dot-plot">Dot Plot</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a>
+  <ul class="collapse">
+  <li><a href="#modify-via-aes-changes" id="toc-modify-via-aes-changes" class="nav-link" data-scroll-target="#modify-via-aes-changes">Modify Via aes changes</a></li>
+  </ul></li>
+  <li><a href="#density-graph" id="toc-density-graph" class="nav-link" data-scroll-target="#density-graph">Density Graph</a></li>
+  <li><a href="#box-plot" id="toc-box-plot" class="nav-link" data-scroll-target="#box-plot">Box Plot</a>
+  <ul class="collapse">
+  <li><a href="#box-plot-with-notches-show-median" id="toc-box-plot-with-notches-show-median" class="nav-link" data-scroll-target="#box-plot-with-notches-show-median">Box Plot With Notches (Show Median)</a></li>
+  </ul></li>
+  <li><a href="#violin-graph-geom_violin" id="toc-violin-graph-geom_violin" class="nav-link" data-scroll-target="#violin-graph-geom_violin">Violin Graph (geom_violin())</a></li>
+  <li><a href="#point-graph-geom_point" id="toc-point-graph-geom_point" class="nav-link" data-scroll-target="#point-graph-geom_point">Point Graph (geom_point())</a></li>
+  <li><a href="#combined-graph-box-plot-point" id="toc-combined-graph-box-plot-point" class="nav-link" data-scroll-target="#combined-graph-box-plot-point">Combined Graph (Box plot + Point)</a></li>
+  </ul></li>
+  <li><a href="#working-with-stats" id="toc-working-with-stats" class="nav-link" data-scroll-target="#working-with-stats">Working With Stats()</a>
+  <ul class="collapse">
+  <li><a href="#stat_summary-method" id="toc-stat_summary-method" class="nav-link" data-scroll-target="#stat_summary-method">stat_summary() method</a></li>
+  <li><a href="#geom-method" id="toc-geom-method" class="nav-link" data-scroll-target="#geom-method">geom() method</a></li>
+  <li><a href="#addming-best-fit-curve-for-scatter-plot" id="toc-addming-best-fit-curve-for-scatter-plot" class="nav-link" data-scroll-target="#addming-best-fit-curve-for-scatter-plot">Addming Best Fit Curve for SCatter plot</a></li>
+  </ul></li>
+  <li><a href="#working-with-facet_warp" id="toc-working-with-facet_warp" class="nav-link" data-scroll-target="#working-with-facet_warp">Working with facet_warp()</a>
+  <ul class="collapse">
+  <li><a href="#facet_grid" id="toc-facet_grid" class="nav-link" data-scroll-target="#facet_grid">facet_grid()</a></li>
+  </ul></li>
+  <li><a href="#using-coordinate" id="toc-using-coordinate" class="nav-link" data-scroll-target="#using-coordinate">Using Coordinate</a>
+  <ul class="collapse">
+  <li><a href="#coord_flip" id="toc-coord_flip" class="nav-link" data-scroll-target="#coord_flip">coord_flip()</a>
+  <ul class="collapse">
+  <li><a href="#fixing-x-and-y-range-using-coord_cartesian" id="toc-fixing-x-and-y-range-using-coord_cartesian" class="nav-link" data-scroll-target="#fixing-x-and-y-range-using-coord_cartesian">fixing x and y range using coord_cartesian()</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#working-with-theme---background-colour-font-size-grid-lines-label-colours" id="toc-working-with-theme---background-colour-font-size-grid-lines-label-colours" class="nav-link" data-scroll-target="#working-with-theme---background-colour-font-size-grid-lines-label-colours">Working With Theme - [Background Colour] | [Font Size] | [Grid Lines] | [Label Colours]</a>
+  <ul class="collapse">
+  <li><a href="#theme_gray" id="toc-theme_gray" class="nav-link" data-scroll-target="#theme_gray">theme_gray()</a></li>
+  <li><a href="#theme_classic" id="toc-theme_classic" class="nav-link" data-scroll-target="#theme_classic">theme_classic()</a></li>
+  <li><a href="#theme-minimal" id="toc-theme-minimal" class="nav-link" data-scroll-target="#theme-minimal">Theme Minimal</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -1087,7 +1136,9 @@ dbl (3): ENGLISH, MATHS, SCIENCE
   .sparkle {
     position: absolute;
     pointer-events: none;
-    background: radial-gradient(circle, #ffffff 0%, #ffd700 40%, transparent 70%);
+    background-image: url('Images/troll.png');
+    background-size: contain;
+    background-repeat:no-repeat;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     opacity: 0.9;
@@ -1101,7 +1152,7 @@ dbl (3): ENGLISH, MATHS, SCIENCE
       opacity: 0.9;
     }
     100% {
-      transform: translate(-50%, -50%) scale(1.4);
+      transform: translate(-50%, -50%) scale(0.6);
       opacity: 0;
     }
   }
@@ -1120,23 +1171,20 @@ dbl (3): ENGLISH, MATHS, SCIENCE
       lastTime = now;
 
       const sparkle = document.createElement("div");
-      sparkle.className = "sparkle";
-
+      sparkle.className = "sparkle";  
       sparkle.style.left = e.pageX + "px";
       sparkle.style.top = e.pageY + "px";
 
-      const size = Math.random() * 4 + 3; // smaller = sharper
+      const size = Math.random() * 20 + 24;
       sparkle.style.width = size + "px";
       sparkle.style.height = size + "px";
 
-      const colors = ["#5050EB", "#6767CF"];
-      sparkle.style.background =
-        colors[Math.floor(Math.random() * colors.length)];
+      sparkle.style.rounte = Math.random() * 360 + 'deg';
 
       document.body.appendChild(sparkle);
 
       // remove faster
-      setTimeout(() => sparkle.remove(), 450);
+      setTimeout(() => sparkle.remove(), 500);
     });
   })();
 </script>

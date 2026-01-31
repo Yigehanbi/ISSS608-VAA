@@ -1,6 +1,7 @@
 ---
 title: "Hands On Exercise 2"
 author: "Xi Zixun"
+format: html
 ---
 
 # 1.0 Set up
@@ -114,7 +115,8 @@ ggplot(data = exam_data,
 
 ## 2.1 Beyond ggplot2 themes
 
-ggplot2 comes with eight [built-in themes](https://ggplot2.tidyverse.org/reference/ggtheme.html), they are: `theme_grey()`, `theme_bw()`, `theme_classic()`, `theme_dark()`, `theme_light()`, `theme_linedraw()`, `theme_minimal()` and `theem_void()` ::: panel-tabset
+ggplot2 comes with eight [built-in themes](https://ggplot2.tidyverse.org/reference/ggtheme.html), they are: `theme_grey()`, `theme_bw()`, `theme_classic()`, `theme_dark()`, `theme_light()`, `theme_linedraw()`, `theme_minimal()` and `theem_void()`
+
 ::: panel-tabset
 ## Plot
 
@@ -147,7 +149,6 @@ ggplot(data = exam_data,
   theme_gray() +
   ggtitle("Distributon of Math Scores")
 ```
-
 :::
 
 Refer to this [link](https://ggplot2.tidyverse.org/reference/index.html#themes) to learn more about ggplot2 `Themes`.

@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-sidebar docked fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../introduction.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
@@ -206,7 +206,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link active" data-scroll-target="#set-up">1.0 Set up</a>
+  <ul class="collapse">
+  <li><a href="#checking-required-packages" id="toc-checking-required-packages" class="nav-link" data-scroll-target="#checking-required-packages">1.1 Checking Required Packages</a></li>
+  <li><a href="#data-loading" id="toc-data-loading" class="nav-link" data-scroll-target="#data-loading">1.2 Data Loading</a></li>
+  <li><a href="#beyond-ggplot2-annotation-ggrepel" id="toc-beyond-ggplot2-annotation-ggrepel" class="nav-link" data-scroll-target="#beyond-ggplot2-annotation-ggrepel">2.0 Beyond ggplot2 Annotation : ggrepel</a>
+  <ul class="collapse">
+  <li><a href="#working-with-repel" id="toc-working-with-repel" class="nav-link" data-scroll-target="#working-with-repel">2.0.1 Working With Repel</a></li>
+  </ul></li>
+  <li><a href="#beyond-ggplot2-themes" id="toc-beyond-ggplot2-themes" class="nav-link" data-scroll-target="#beyond-ggplot2-themes">2.1 Beyond ggplot2 themes</a></li>
+  <li><a href="#code-2" id="toc-code-2" class="nav-link" data-scroll-target="#code-2">Code</a>
+  <ul class="collapse">
+  <li><a href="#working-with-ggtheme-package" id="toc-working-with-ggtheme-package" class="nav-link" data-scroll-target="#working-with-ggtheme-package">2.1.1 Working With ggtheme Package</a></li>
+  <li><a href="#working-with-hrbrtheems-package" id="toc-working-with-hrbrtheems-package" class="nav-link" data-scroll-target="#working-with-hrbrtheems-package">2.1.2 Working with hrbrtheems Package</a></li>
+  </ul></li>
+  <li><a href="#beyond-single-graph" id="toc-beyond-single-graph" class="nav-link" data-scroll-target="#beyond-single-graph">2.2 Beyond Single Graph</a>
+  <ul class="collapse">
+  <li><a href="#creating-composite-graphics-pathwork-method" id="toc-creating-composite-graphics-pathwork-method" class="nav-link" data-scroll-target="#creating-composite-graphics-pathwork-method">2.2.1 Creating Composite Graphics: Pathwork Method</a></li>
+  <li><a href="#combining-two-ggplot2-graphs" id="toc-combining-two-ggplot2-graphs" class="nav-link" data-scroll-target="#combining-two-ggplot2-graphs">2.2.2 Combining Two ggplot2 graphs</a></li>
+  <li><a href="#combining-three-ggplot2-graphs" id="toc-combining-three-ggplot2-graphs" class="nav-link" data-scroll-target="#combining-three-ggplot2-graphs">2.2.3 Combining Three ggplot2 graphs</a></li>
+  <li><a href="#creating-a-composite-figure-with-tag" id="toc-creating-a-composite-figure-with-tag" class="nav-link" data-scroll-target="#creating-a-composite-figure-with-tag">2.2.4 Creating a composite Figure with tag</a></li>
+  <li><a href="#creating-figure-with-insert" id="toc-creating-figure-with-insert" class="nav-link" data-scroll-target="#creating-figure-with-insert">2.2.5 Creating Figure with insert</a></li>
+  <li><a href="#creating-a-composite-figure-by-using-patchwork-ggtheme" id="toc-creating-a-composite-figure-by-using-patchwork-ggtheme" class="nav-link" data-scroll-target="#creating-a-composite-figure-by-using-patchwork-ggtheme">2.2.6 Creating a composite figure by using patchwork &amp; ggtheme</a></li>
+  </ul></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">2.3 Reference</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -1124,7 +1156,9 @@ With <code>inset_element()</code> of <strong>patchwork</strong>, we can place on
   .sparkle {
     position: absolute;
     pointer-events: none;
-    background: radial-gradient(circle, #ffffff 0%, #ffd700 40%, transparent 70%);
+    background-image: url('Images/troll.png');
+    background-size: contain;
+    background-repeat:no-repeat;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     opacity: 0.9;
@@ -1138,7 +1172,7 @@ With <code>inset_element()</code> of <strong>patchwork</strong>, we can place on
       opacity: 0.9;
     }
     100% {
-      transform: translate(-50%, -50%) scale(1.4);
+      transform: translate(-50%, -50%) scale(0.6);
       opacity: 0;
     }
   }
@@ -1157,23 +1191,20 @@ With <code>inset_element()</code> of <strong>patchwork</strong>, we can place on
       lastTime = now;
 
       const sparkle = document.createElement("div");
-      sparkle.className = "sparkle";
-
+      sparkle.className = "sparkle";  
       sparkle.style.left = e.pageX + "px";
       sparkle.style.top = e.pageY + "px";
 
-      const size = Math.random() * 4 + 3; // smaller = sharper
+      const size = Math.random() * 48 + 36;
       sparkle.style.width = size + "px";
       sparkle.style.height = size + "px";
 
-      const colors = ["#5050EB", "#6767CF"];
-      sparkle.style.background =
-        colors[Math.floor(Math.random() * colors.length)];
+      sparkle.style.rounte = Math.random() * 360 + 'deg';
 
       document.body.appendChild(sparkle);
 
       // remove faster
-      setTimeout(() => sparkle.remove(), 450);
+      setTimeout(() => sparkle.remove(), 500);
     });
   })();
 </script>

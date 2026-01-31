@@ -13,7 +13,7 @@ website:
     search: true
     contents:
       - text: "Home"
-        href: introduction.qmd
+        href: "index.qmd"
       - section: "Hands On Exercise"
         contents:
           - text: "Hands On Exercise 1"
@@ -38,7 +38,9 @@ format:
             .sparkle {
               position: absolute;
               pointer-events: none;
-              background: radial-gradient(circle, #ffffff 0%, #ffd700 40%, transparent 70%);
+              background-image: url('Images/troll.png');
+              background-size: contain;
+              background-repeat:no-repeat;
               border-radius: 50%;
               transform: translate(-50%, -50%);
               opacity: 0.9;
@@ -52,7 +54,7 @@ format:
                 opacity: 0.9;
               }
               100% {
-                transform: translate(-50%, -50%) scale(1.4);
+                transform: translate(-50%, -50%) scale(0.6);
                 opacity: 0;
               }
             }
@@ -71,23 +73,20 @@ format:
                 lastTime = now;
           
                 const sparkle = document.createElement("div");
-                sparkle.className = "sparkle";
-                sparkke.style = "img/"
+                sparkle.className = "sparkle";  
                 sparkle.style.left = e.pageX + "px";
                 sparkle.style.top = e.pageY + "px";
           
-                const size = Math.random() * 4 + 3; // smaller = sharper
+                const size = Math.random() * 48 + 36;
                 sparkle.style.width = size + "px";
                 sparkle.style.height = size + "px";
           
-                const colors = ["#5050EB", "#6767CF"];
-                sparkle.style.background =
-                  colors[Math.floor(Math.random() * colors.length)];
+                sparkle.style.rounte = Math.random() * 360 + 'deg';
           
                 document.body.appendChild(sparkle);
           
                 // remove faster
-                setTimeout(() => sparkle.remove(), 450);
+                setTimeout(() => sparkle.remove(), 500);
               });
             })();
           </script>
