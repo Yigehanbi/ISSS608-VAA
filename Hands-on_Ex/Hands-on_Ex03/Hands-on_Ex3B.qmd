@@ -1,7 +1,6 @@
 ---
 title: "Hands-on_Ex3B"
 author: 'Xi Zixun'
-format: html
 ---
 
 ## 4.1 **Overview**

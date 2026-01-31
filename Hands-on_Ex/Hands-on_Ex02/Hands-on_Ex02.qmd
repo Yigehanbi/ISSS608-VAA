@@ -1,7 +1,6 @@
 ---
 title: "Hands On Exercise 2"
 author: "Xi Zixun"
-format: html
 ---
 
 # 1.0 Set up
