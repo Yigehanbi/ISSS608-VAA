@@ -185,6 +185,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Hands On Exercise 3 Part B</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands On Exercise 4 - Visualing Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands On Exercise 4 - Visual Statistic Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04c.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands On Exercise 4 - Visualising Uncertainty</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04d.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands On Exercise 4 - Funnel Plots for Fair Comparisons</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -1181,37 +1205,6 @@ With <code>inset_element()</code> of <strong>patchwork</strong>, we can place on
     }
   }
 </style>
-
-<script>
-  (() => {
-    if ("ontouchstart" in window) return;
-    if (window.matchMedia("(prefers-reduced-motion)").matches) return;
-
-    let lastTime = 0;
-
-    document.addEventListener("mousemove", (e) => {
-      const now = performance.now();
-      if (now - lastTime < 18) return; // much faster response
-      lastTime = now;
-
-      const sparkle = document.createElement("div");
-      sparkle.className = "sparkle";  
-      sparkle.style.left = e.pageX + "px";
-      sparkle.style.top = e.pageY + "px";
-
-      const size = Math.random() * 48 + 36;
-      sparkle.style.width = size + "px";
-      sparkle.style.height = size + "px";
-
-      sparkle.style.rounte = Math.random() * 360 + 'deg';
-
-      document.body.appendChild(sparkle);
-
-      // remove faster
-      setTimeout(() => sparkle.remove(), 500);
-    });
-  })();
-</script>
 
 
 

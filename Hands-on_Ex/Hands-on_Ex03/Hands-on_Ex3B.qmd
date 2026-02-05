@@ -51,9 +51,10 @@ Write a code chunk to import Data worksheet from GlobalPopulation Excel workbook
 #| warning: false
 
 col <- c("Country", "Continent")
+
 globalPop <- read_xls("data/GlobalPopulation.xls",
-                      sheet="Data") %>%
-  mutate_each_(funs(factor(.)), col) %>%
+                      sheet = "Data") %>%
+  mutate(across(all_of(col), as.factor)) %>%
   mutate(Year = as.integer(Year))
 
 ```
@@ -64,7 +65,7 @@ Unfortunately, mutate_each\_() was deprecated in dplyr 0.7.0. and funs() was dep
 #| eval: false
 
 col <- c("Country", "Continent")
-globalPop <- read_xls("chap03/data/GlobalPopulation.xls",
+globalPop <- read_xls("data/GlobalPopulation.xls",
                       sheet="Data") %>%
   mutate_at(col, as.factor) %>%
   mutate(Year = as.integer(Year))
@@ -76,7 +77,7 @@ Instead of using `mutate_at()`, [across()](https://dplyr.tidyverse.org/reference
 #| eval: false
 
 col <- c("Country", "Continent")
-globalPop <- read_xls("chap03/data/GlobalPopulation.xls",
+globalPop <- read_xls("data/GlobalPopulation.xls",
                       sheet="Data") %>%
   mutate(across(col, as.factor)) %>%
   mutate(Year = as.integer(Year))
@@ -149,10 +150,7 @@ In the Code Chunk Below
 
 -   `ease_aes()` is used to control easing of aesthetics. The default is linear. Other methods are: quadratic, cubic, quartic, quintic, sine, circular, exponential, elastic, back, and bounce.
 
-
-
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -201,7 +199,6 @@ ggplot(globalPop, aes(x = Old, y = Young,
 
 The animated bubble chart
 
-
 ## 4.4 **Animated Data Visualisation: ploty**
 
 In Plotly R package, both `ggplotly()` and `plot_ly()` support key frame animations through the `frame` argument/aesthetic. They also support an `ids` argument/aesthetic to ensure smooth transitions between objects with the same id (which helps facilitate object constancy).
@@ -210,9 +207,7 @@ In Plotly R package, both `ggplotly()` and `plot_ly()` support key frame animati
 
 In this sub-section, you will learn how to create an animated bubble plot by using `ggplotly()` method.
 
-
 ::: pane;-tabset
-
 ## Plot
 
 ```{r}
@@ -238,10 +233,7 @@ ggplotly(gg)
 
 ```
 
-
-
-
-## Code 
+## Code
 
 ```{r}
 #| eval: false
@@ -269,9 +261,7 @@ ggplotly(gg)
 
 Notice that although `show.legend = FALSE` argument was used, the legend still appears on the plot. To overcome this problem, `theme(legend.position='none')` should be used as shown in the plot and code chunk below.
 
-
 ::: panel-tabset
-
 ## Plot
 
 ```{r}
@@ -328,7 +318,6 @@ ggplotly(gg)
 In this sub-section, you will learn how to create an animated bubble plot by using `plot_ly()` method.
 
 ::: panel-tabset
-
 ## Plot
 
 ```{r}

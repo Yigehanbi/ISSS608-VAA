@@ -1,5 +1,10 @@
 project:
   type: website
+  resources: 
+    - site.js
+    - images/troll.png
+  
+  
 
 website:
   title: "ISSS608 - VAA"
@@ -24,6 +29,15 @@ website:
             href: "Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.qmd"
           - text: "Hands On Exercise 3 Part B"
             href: "Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex3B.qmd"
+          - text: "Hands On Exercise 4 - Visualing Distribution"
+            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04a.qmd"
+          - text: "Hands On Exercise 4 - Visual Statistic Analysis"
+            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04b.qmd"
+          - text: "Hands On Exercise 4 - Visualising Uncertainty"
+            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04c.qmd"
+          - text: "Hands On Exercise 4 - Funnel Plots for Fair Comparisons"
+            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04d.qmd"
+
       - section: "Lesson Note"
         contents:
           - text: "TBC"
@@ -32,6 +46,8 @@ website:
 format: 
   html:
     toc: true
+    scripts:
+      - site.js
     include-after-body:
       - text: |
           <style>
@@ -60,36 +76,7 @@ format:
             }
           </style>
           
-          <script>
-            (() => {
-              if ("ontouchstart" in window) return;
-              if (window.matchMedia("(prefers-reduced-motion)").matches) return;
-          
-              let lastTime = 0;
-          
-              document.addEventListener("mousemove", (e) => {
-                const now = performance.now();
-                if (now - lastTime < 18) return; // much faster response
-                lastTime = now;
-          
-                const sparkle = document.createElement("div");
-                sparkle.className = "sparkle";  
-                sparkle.style.left = e.pageX + "px";
-                sparkle.style.top = e.pageY + "px";
-          
-                const size = Math.random() * 48 + 36;
-                sparkle.style.width = size + "px";
-                sparkle.style.height = size + "px";
-          
-                sparkle.style.rounte = Math.random() * 360 + 'deg';
-          
-                document.body.appendChild(sparkle);
-          
-                // remove faster
-                setTimeout(() => sparkle.remove(), 500);
-              });
-            })();
-          </script>
+      
           
           
 
