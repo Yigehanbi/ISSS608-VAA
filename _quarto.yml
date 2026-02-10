@@ -1,11 +1,16 @@
 project:
   type: website
-  
+
+editor: visual
+
+execute: 
+  freeze: auto
   
 
 website:
   title: "ISSS608 - VAA"
   sidebar:
+    background: info
     tools: 
       - icon: house-fill
         href: "index.qmd"
@@ -15,26 +20,27 @@ website:
     search: true
     contents:
       - text: "Home"
-        href: "index.qmd"
-      - section: "Hands On Exercise"
-        contents:
-          - text: "Hands On Exercise 1"
-            href: "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.qmd"
-          - text: "Hands On Exercise 2"
-            href: "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.qmd"
+        href: "index.html"
+      - text: "Hands On Exercise 1"
+        href: "Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html"
+      - text: "Hands On Exercise 2"
+        href: "Hands-on_Ex/Hands-on_Ex02/Hands-on_Ex02.html"
+      - section: "Hands On Exercise 3"
+        contents: 
           - text: "Hands On Exercise 3 Part A"
-            href: "Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.qmd"
+            href: "Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex03.html"
           - text: "Hands On Exercise 3 Part B"
-            href: "Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex3B.qmd"
+            href: "Hands-on_Ex/Hands-on_Ex03/Hands-on_Ex3B.html"
+      - section: "Hands On Exercise 4"
+        contents:
           - text: "Hands On Exercise 4 - Visualing Distribution"
-            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04a.qmd"
+            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04a.html"
           - text: "Hands On Exercise 4 - Visual Statistic Analysis"
-            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04b.qmd"
+            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04b.html"
           - text: "Hands On Exercise 4 - Visualising Uncertainty"
-            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04c.qmd"
+            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04c.html"
           - text: "Hands On Exercise 4 - Funnel Plots for Fair Comparisons"
-            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04d.qmd"
-
+            href: "Hands-on_Ex/Hands-on_Ex04/Hands-on_Ex04d.html"
       - section: "Lesson Note"
         contents:
           - text: "TBC"
@@ -105,8 +111,7 @@ format:
 
           
           </script>
-          
-      
-          
+
+
           
 
