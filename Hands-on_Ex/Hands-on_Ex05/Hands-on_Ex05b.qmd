@@ -1,0 +1,271 @@
+---
+title: "Visual Correlation Analysis"
+author: “Xi Zixun"
+execute:
+  fig-width: 12
+  fig-height: 12
+---
+
+```{r}
+pacman::p_load(corrplot, ggstatsplot, tidyverse)
+```
+
+## Importing the data
+
+```{r}
+wine <- read_csv("data/wine_quality.csv")
+
+```
+
+## **Building Correlation Matrix: *pairs()* method**
+
+### **Building a basic correlation matrix**
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+pairs(wine[, 1:11])
+```
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+pairs(wine[,2:12])
+```
+
+### **Drawing the lower corner**
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+pairs(wine[,2:12], upper.panel = NULL)
+
+```
+
+Similarly, you can display the upper half of the correlation matrix by using the code chun below.
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+pairs(wine[,2:12], lower.panel = NULL)
+```
+
+### **Including with correlation coefficients**
+
+```{r,warning=FALSE,error=FALSE}
+#| fig-width: 12
+#| fig-height: 12
+panel.cor <- function(x, y, digits=2, prefix="", cex.cor, ...) {
+usr <- par("usr")
+on.exit(par(usr))
+par(usr = c(0, 1, 0, 1))
+r <- abs(cor(x, y, use="complete.obs"))
+txt <- format(c(r, 0.123456789), digits=digits)[1]
+txt <- paste(prefix, txt, sep="")
+if(missing(cex.cor)) cex.cor <- 0.8/strwidth(txt)
+text(0.5, 0.5, txt, cex = cex.cor * (1 + r) / 2)
+}
+
+pairs(wine[,2:12], 
+      upper.panel = panel.cor)
+```
+
+## **Visualising Correlation Matrix: ggcormat():The basic plot**
+
+```{r, warning=FALSE, message=FALSE}
+#| fig-width: 12
+#| fig-height: 12
+ggstatsplot::ggcorrmat(
+  data = wine, 
+  cor.vars = 1:11)
+```
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+ggstatsplot::ggcorrmat(
+  data = wine, 
+  cor.vars = 1:11,
+  ggcorrplot.args = list(outline.color = "black", 
+                         hc.order = TRUE,
+                         tl.cex = 10),
+  title    = "Correlogram for wine dataset",
+  subtitle = "Four pairs are no significant at p < 0.05"
+)
+```
+
+Things to learn from the code chunk above:
+
+-   `cor.vars` argument is used to compute the correlation matrix needed to build the corrgram.
+
+-   `ggcorrplot.args` argument provide additional (mostly aesthetic) arguments that will be passed to [`ggcorrplot::ggcorrplot`](http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2) function. The list should avoid any of the following arguments since they are already internally being used: `corr`, `method`, `p.mat`, `sig.level`, `ggtheme`, `colors`, `lab`, `pch`, `legend.title`, `digits`.
+
+The sample sub-code chunk can be used to control specific component of the plot such as the font size of the x-axis, y-axis, and the statistical report.
+
+```{r}
+ggplot.component = list(
+    theme(text=element_text(size=5),
+      axis.text.x = element_text(size = 8),
+      axis.text.y = element_text(size = 8)))
+```
+
+## **Building multiple plots**
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+grouped_ggcorrmat(
+  data = wine,
+  cor.vars = 1:11,
+  grouping.var = type,
+  type = "robust",
+  p.adjust.method = "holm",
+  plotgrid.args = list(ncol = 2),
+  ggcorrplot.args = list(outline.color = "black", 
+                         hc.order = TRUE,
+                         tl.cex = 10),
+  annotation.args = list(
+    tag_levels = "a",
+    title = "Correlogram for wine dataset",
+    subtitle = "The measures are: alcohol, sulphates, fixed acidity, citric acid, chlorides, residual sugar, density, free sulfur dioxide and volatile acidity",
+    caption = "Dataset: UCI Machine Learning Repository"
+  )
+)
+```
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+
+library(corrplot)
+
+wine.cor <- cor(wine[, 1:11])
+corrplot(
+  wine.cor,
+  method = "circle",
+  type   = "full",
+  tl.cex = 1.5
+)
+
+```
+
+### **Working with visual geometrics**
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+corrplot(wine.cor, 
+         method = "ellipse",
+         type   = "full",
+         tl.cex = 1.5
+         ) 
+```
+
+### **Working with layout**
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+corrplot(wine.cor, 
+         method = "ellipse",
+         type   = "lower",
+         tl.cex = 1.5
+         ) 
+```
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+corrplot(wine.cor, 
+         method = "ellipse",
+         type   = "lower",
+         diag = FALSE,
+         tl.col = "black",
+         tl.cex = 1.5
+         ) 
+```
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+corrplot.mixed(wine.cor, 
+               lower = "ellipse", 
+               upper = "number",
+               tl.pos = "lt",
+               diag = "l",
+               tl.col = "black")
+```
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+corrplot.mixed(wine.cor, 
+               lower = "ellipse", 
+               upper = "number",
+               tl.pos = "lt",
+               diag = "l",
+               tl.col = "black")
+```
+
+With corrplot package, we can use the *cor.mtest()* to compute the p-values and confidence interval for each pair of variables.
+
+```{r}
+wine.sig = cor.mtest(wine.cor, conf.level= .95)
+```
+
+We can then use the *p.mat* argument of *corrplot* function as shown in the code chunk below.
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+corrplot(wine.cor,
+         method = "number",
+         type = "lower",
+         diag = FALSE,
+         tl.col = "black",
+         tl.srt = 45,
+         p.mat = wine.sig$p,
+         sig.level = .05)
+```
+
+### **Reorder a corrgram**
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+corrplot.mixed(wine.cor, 
+               lower = "ellipse", 
+               upper = "number",
+               tl.pos = "lt",
+               diag = "l",
+               order="AOE",
+               tl.col = "black")
+```
+
+### **Reordering a correlation matrix using hclust**
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+corrplot(wine.cor, 
+         method = "ellipse", 
+         tl.pos = "lt",
+         tl.col = "black",
+         order="hclust",
+         hclust.method = "ward.D",
+         addrect = 3)
+```
+
+### **Reordering a correlation matrix using hclust**
+
+```{r}
+#| fig-width: 12
+#| fig-height: 12
+corrplot(wine.cor, 
+         method = "ellipse", 
+         tl.pos = "lt",
+         tl.col = "black",
+         order="hclust",
+         hclust.method = "ward.D",
+         addrect = 3)
+```

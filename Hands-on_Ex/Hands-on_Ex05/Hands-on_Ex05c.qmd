@@ -1,0 +1,200 @@
+---
+title: " Heatmap for Visualising and Analysing Multivariate Data"
+author: "Xi Zixun"
+format: html
+---
+
+```{r}
+pacman::p_load(seriation, dendextend, heatmaply, tidyverse)
+```
+
+## Importing the data
+
+```{r}
+wh <- read_csv("data/WHData-2018.csv")
+```
+
+### **Preparing the data**
+
+### **Transforming the data frame into a matrix**
+
+```{r}
+
+row.names(wh) <- wh$Country
+
+wh_numeric <- wh[, c(3, 7:12)]
+
+clean_wh_matrix <- function(df) {
+
+  x <- as.data.frame(lapply(df, as.numeric))
+  row.names(x) <- row.names(df)
+
+  x <- as.matrix(x)
+  mode(x) <- "numeric"
+
+  x <- x[, colSums(!is.na(x)) > 0, drop = FALSE]
+  x <- x[, apply(x, 2, sd, na.rm = TRUE) > 0, drop = FALSE]
+
+  x
+}
+
+wh_matrix <- clean_wh_matrix(wh_numeric)
+
+```
+
+### **heatmap() of R Stats**
+
+```{r, warning=FALSE, message=FALSE}
+wh_heatmap <- heatmap(wh_matrix,
+                      Rowv=NA, Colv=NA)
+```
+
+to plot a cluster heatmap, we just have to use the default as shown in the code chunk below.
+
+```{r,warning=FALSE}
+#| fig-width: 8
+#| fig-height: 8
+wh_heatmap <- heatmap(wh_matrix)
+```
+
+### **Plotting confidence interval of point estimates**
+
+```{r}
+#| fig-width: 8
+#| fig-height: 8
+wh_heatmap <- heatmap(wh_matrix,
+                      scale="column",
+                      cexRow = 0.6, 
+                      cexCol = 0.8,
+                      margins = c(10, 4))
+```
+
+## **Creating Interactive Heatmap**
+
+### **Working with heatmaply**
+
+```{r, warning=FALSE, message=FALSE}
+heatmaply(
+  mtcars,
+  width  = 600,
+  height = 400
+)
+```
+
+### 
+
+```{r}
+
+mat <- as.matrix(wh_matrix[, -c(1, 2, 4, 5)])
+mode(mat) <- "numeric"
+
+heatmaply(
+  mat,
+  width  = 600,
+  height = 500
+)
+
+```
+
+### **Data trasformation**
+
+#### Scaling method
+
+```{r}
+heatmaply(wh_matrix[, -c(1, 2, 4, 5)],
+          scale = "column",  width  = 1200,
+  height = 2000)
+```
+
+#### Normalising method
+
+```{r, warning=FALSE, message=FALSE}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]))
+
+```
+
+#### Normalising method
+
+```{r}
+
+heatmaply(percentize(wh_matrix[, -c(1, 2, 4, 5)]))
+```
+
+#### Percentising method
+
+```{r}
+heatmaply(percentize(wh_matrix[, -c(1, 2, 4, 5)]))
+```
+
+### **Clustering algorithm**
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),
+          dist_method = "euclidean",
+          hclust_method = "ward.D")
+```
+
+### **Statistical approach**
+
+```{r}
+wh_d <- dist(normalize(wh_matrix[, -c(1, 2, 4, 5)]), method = "euclidean")
+dend_expend(wh_d)[[3]]
+```
+
+```{r}
+wh_clust <- hclust(wh_d, method = "average")
+num_k <- find_k(wh_clust)
+plot(num_k)
+```
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),
+          dist_method = "euclidean",
+          hclust_method = "average",
+          k_row = 3)
+```
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),
+          seriate = "OLO")
+```
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),
+          seriate = "GW")
+```
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),
+          seriate = "mean")
+```
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),
+          seriate = "none")
+```
+
+### **Working with colour palettes**
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),
+          seriate = "none",
+          colors = Blues)
+```
+
+### **The finishing touch**
+
+```{r}
+heatmaply(normalize(wh_matrix[, -c(1, 2, 4, 5)]),
+          Colv=NA,
+          seriate = "none",
+          colors = Blues,
+          k_row = 5,
+          margins = c(NA,200,60,NA),
+          fontsize_row = 4,
+          fontsize_col = 5,
+          main="World Happiness Score and Variables by Country, 2018 \nDataTransformation using Normalise Method",
+          xlab = "World Happiness Indicators",
+          ylab = "World Countries"
+          )
+```

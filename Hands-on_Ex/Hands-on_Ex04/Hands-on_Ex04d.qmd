@@ -49,8 +49,8 @@ FunnelPlotR package uses ggplot to generate funnel plots. It requires a `numerat
 -   `xrange` and `yrange`: to specify the range to display for axes, acts like a zoom function.
 -   Other aesthetic components such as graph title, axis labels etc.
 
-
 ### 8.4.1 FunnelPlotR methods: The basic plot
+
 The code chunk below plots a funnel plot.
 
 ::: panel-tabset
@@ -85,14 +85,11 @@ funnel_plot(
 ```
 :::
 
-A funnel plot object with 267 points of which 0 are outliers. 
-Plot is adjusted for overdispersion. 
-Things to learn from the code chunk above.
+A funnel plot object with 267 points of which 0 are outliers. Plot is adjusted for overdispersion. Things to learn from the code chunk above.
 
 -   `group` in this function is different from the scatterplot. Here, it defines the level of the points to be plotted i.e. Sub-district, District or City. If Cityc is chosen, there are only six data points.
 -   By default, `data_type` argument is “SR”.
 -   `limit`: Plot limits, accepted values are: 95 or 99, corresponding to 95% or 99.8% quantiles of the distribution.
-
 
 ### 8.4.2 FunnelPlotR methods: Makeover 1
 
@@ -136,9 +133,7 @@ funnel_plot(
 ```
 :::
 
-A funnel plot object with 267 points of which 7 are outliers. 
-Plot is adjusted for overdispersion. 
-Things to learn from the code chunk above. + `data_type` argument is used to change from default “SR” to “PR” (i.e. proportions). + `xrange` and `yrange` are used to set the range of x-axis and y-axis
+A funnel plot object with 267 points of which 7 are outliers. Plot is adjusted for overdispersion. Things to learn from the code chunk above. + `data_type` argument is used to change from default “SR” to “PR” (i.e. proportions). + `xrange` and `yrange` are used to set the range of x-axis and y-axis
 
 ### 8.4.3 FunnelPlotR methods: Makeover 2
 
@@ -190,9 +185,7 @@ funnel_plot(
 ```
 :::
 
-A funnel plot object with 267 points of which 7 are outliers. 
-Plot is adjusted for overdispersion. 
-Things to learn from the code chunk above.
+A funnel plot object with 267 points of which 7 are outliers. Plot is adjusted for overdispersion. Things to learn from the code chunk above.
 
 -   `label` = `NA` argument is to removed the default label outliers feature.
 -   `title` argument is used to add plot title.
@@ -238,7 +231,7 @@ dfCI <- data.frame(number.ll95, number.ul95, number.ll999,
 
 ### 8.5.3 Plotting a static funnel plot
 
-In the code chunk below, ggplot2 functions are used to plot a static funnel plot. 
+In the code chunk below, ggplot2 functions are used to plot a static funnel plot.
 
 ::: panel-tabset
 ## Plot
@@ -365,8 +358,8 @@ fp_ggplotly <- ggplotly(p,
 fp_ggplotly
 ```
 
-
 ## Code
+
 ```{r}
 #| eval: false
 #| warning: false
@@ -378,6 +371,4 @@ fp_ggplotly <- ggplotly(p,
               "y"))
 fp_ggplotly
 ```
-
-
 :::

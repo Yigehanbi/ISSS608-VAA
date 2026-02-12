@@ -1,0 +1,233 @@
+---
+title: "Treemap Visualisation with R"
+author: "Xi Zixun"
+---
+
+```{r}
+pacman::p_load(treemap, treemapify, tidyverse) 
+```
+
+## Importing the data
+
+```{r}
+realis2018 <- read_csv("data/realis2018.csv")
+```
+
+## **Data Wrangling and Manipulation**
+
+### **Grouped summaries without the Pipe**
+
+```{r}
+realis2018_grouped <- group_by(realis2018, `Project Name`,
+                               `Planning Region`, `Planning Area`, 
+                               `Property Type`, `Type of Sale`)
+realis2018_summarised <- summarise(realis2018_grouped, 
+                          `Total Unit Sold` = sum(`No. of Units`, na.rm = TRUE),
+                          `Total Area` = sum(`Area (sqm)`, na.rm = TRUE),
+                          `Median Unit Price ($ psm)` = median(`Unit Price ($ psm)`, na.rm = TRUE), 
+                          `Median Transacted Price` = median(`Transacted Price ($)`, na.rm = TRUE))
+```
+
+## **Designing Treemap with treemap Package**
+
+**treemap** package is a R package specially designed to offer great flexibility in drawing treemaps. The core function, namely: *treemap()* offers at least 43 arguments. In this section, we will only explore the major arguments for designing elegent and yet truthful treemaps.
+
+### **Designing a static treemap**
+
+```{r, warning=FALSE, message=FALSE}
+realis2018_selected <- realis2018_summarised %>%
+  filter(`Property Type` == "Condominium", `Type of Sale` == "Resale")
+```
+
+### **Using the basic arguments**
+
+The code chunk below designed a treemap by using three core arguments of *treemap()*, namely: *index*, *vSize* and *vColor*.
+
+```{r}
+treemap(realis2018_selected,
+        index=c("Planning Region", "Planning Area", "Project Name"),
+        vSize="Total Unit Sold",
+        vColor="Median Unit Price ($ psm)",
+        title="Resale Condominium by Planning Region and Area, 2017",
+        title.legend = "Median Unit Price (S$ per sq. m)"
+        )
+```
+
+### **Working with *vColor* and *type* arguments**
+
+### 
+
+```{r, warning=FALSE, message=FALSE}
+treemap(realis2018_selected,
+        index=c("Planning Region", "Planning Area", "Project Name"),
+        vSize="Total Unit Sold",
+        vColor="Median Unit Price ($ psm)",
+        type = "value",
+        title="Resale Condominium by Planning Region and Area, 2017",
+        title.legend = "Median Unit Price (S$ per sq. m)"
+        )
+```
+
+### **Colours in treemap package**
+
+### **The “value” type treemap**
+
+```{r}
+treemap(realis2018_selected,
+        index=c("Planning Region", "Planning Area", "Project Name"),
+        vSize="Total Unit Sold",
+        vColor="Median Unit Price ($ psm)",
+        type="value",
+        palette="RdYlBu", 
+        title="Resale Condominium by Planning Region and Area, 2017",
+        title.legend = "Median Unit Price (S$ per sq. m)"
+        )
+```
+
+### **The “manual” type treema**
+
+```{r}
+treemap(realis2018_selected,
+        index=c("Planning Region", "Planning Area", "Project Name"),
+        vSize="Total Unit Sold",
+        vColor="Median Unit Price ($ psm)",
+        type="manual",
+        palette="RdYlBu", 
+        title="Resale Condominium by Planning Region and Area, 2017",
+        title.legend = "Median Unit Price (S$ per sq. m)"
+        )
+```
+
+```{r}
+treemap(realis2018_selected,
+        index=c("Planning Region", "Planning Area", "Project Name"),
+        vSize="Total Unit Sold",
+        vColor="Median Unit Price ($ psm)",
+        type="manual",
+        palette="Blues", 
+        title="Resale Condominium by Planning Region and Area, 2017",
+        title.legend = "Median Unit Price (S$ per sq. m)"
+        )
+```
+
+### **Treemap Layout**
+
+### **Working with *algorithm* argument**
+
+```{r}
+treemap(realis2018_selected,
+        index=c("Planning Region", "Planning Area", "Project Name"),
+        vSize="Total Unit Sold",
+        vColor="Median Unit Price ($ psm)",
+        type="manual",
+        palette="Blues", 
+        algorithm = "squarified",
+        title="Resale Condominium by Planning Region and Area, 2017",
+        title.legend = "Median Unit Price (S$ per sq. m)"
+        )
+```
+
+### **Using *sortID***
+
+```{r}
+treemap(realis2018_selected,
+        index=c("Planning Region", "Planning Area", "Project Name"),
+        vSize="Total Unit Sold",
+        vColor="Median Unit Price ($ psm)",
+        type="manual",
+        palette="Blues", 
+        algorithm = "pivotSize",
+        sortID = "Median Transacted Price",
+        title="Resale Condominium by Planning Region and Area, 2017",
+        title.legend = "Median Unit Price (S$ per sq. m)"
+        )
+```
+
+## **Designing Treemap using treemapify Package**
+
+### **Designing a basic treemap**
+
+```{r}
+ggplot(data=realis2018_selected, 
+       aes(area = `Total Unit Sold`,
+           fill = `Median Unit Price ($ psm)`),
+       layout = "scol",
+       start = "bottomleft") + 
+  geom_treemap() +
+  scale_fill_gradient(low = "light blue", high = "blue")
+```
+
+### **Defining hierarchy**
+
+```{r}
+ggplot(data=realis2018_selected, 
+       aes(area = `Total Unit Sold`,
+           fill = `Median Unit Price ($ psm)`,
+           subgroup = `Planning Region`),
+       start = "topleft") + 
+  geom_treemap()
+```
+
+Group by Planning Area
+
+```{r}
+ggplot(data=realis2018_selected, 
+       aes(area = `Total Unit Sold`,
+           fill = `Median Unit Price ($ psm)`,
+           subgroup = `Planning Region`,
+           subgroup2 = `Planning Area`)) + 
+  geom_treemap()
+```
+
+Adding boundary line
+
+```{r}
+ggplot(data=realis2018_selected, 
+       aes(area = `Total Unit Sold`,
+           fill = `Median Unit Price ($ psm)`,
+           subgroup = `Planning Region`,
+           subgroup2 = `Planning Area`)) + 
+  geom_treemap() +
+  geom_treemap_subgroup2_border(colour = "gray40",
+                                size = 2) +
+  geom_treemap_subgroup_border(colour = "gray20")
+```
+
+## **Designing Interactive Treemap using d3treeR**
+
+### **Installing *d3treeR* package**
+
+```{r}
+#install.packages("devtools")
+```
+
+```{r}
+library(devtools)
+#install_github("timelyportfolio/d3treeR")
+```
+
+```{r}
+library(d3treeR)
+```
+
+### **Designing An Interactive Treemap**
+
+```{r}
+library(treemap)
+library(d3treeR)
+
+tm <- treemap(realis2018_summarised,
+        index=c("Planning Region", "Planning Area"),
+        vSize="Total Unit Sold",
+        vColor="Median Unit Price ($ psm)",
+        type="value",
+        title="Private Residential Property Sold, 2017",
+        title.legend = "Median Unit Price (S$ per sq. m)"
+        )
+```
+
+2.  Then *d3tree()* is used to build an interactive treemap.
+
+```{r}
+d3tree(tm,rootname = "Singapore" )
+```
