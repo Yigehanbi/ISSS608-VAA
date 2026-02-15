@@ -55,6 +55,10 @@ website:
                 href: "Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05d.html"
               - text: "Hands On Exercise 5 - Treemap Visualisation with R"
                 href: "Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05e.html"
+      - section: "Take Home Exercise"
+        contents:
+            - text: "Take Home Exercise 1"
+              href: "Take_Home_Ex/Take_Home_Ex01/Take_Home_Ex01.html"
       - section: "Lesson Note"
         contents:
           - text: "TBC"
@@ -62,6 +66,7 @@ website:
       
 format: 
   html:
+    css: styles.css 
     toc: true
     include-after-body:
       - text: |
