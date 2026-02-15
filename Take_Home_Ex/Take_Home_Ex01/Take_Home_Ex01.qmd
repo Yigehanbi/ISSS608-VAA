@@ -50,11 +50,12 @@ likert_1_5 <- c("Time_Friends", "Time_SocicalMedia", "Time_Studying", "GPA",
 ```
 
 ```{r}
-edu <- edu %>%
-  mutate(
-    GPA = factor(GPA),
-    Gender = factor(Gender, levels = c(1,2), labels = c("Male","Female"))
-  )
+edu <- mutate(
+  edu,
+  GPA = factor(GPA),
+  Gender = factor(Gender, levels = c(1, 2),
+                  labels = c("Male", "Female"))
+)
 
 ```
 
@@ -68,13 +69,20 @@ An out-of-range check was done to make sure all survey responses fall within the
 ```{r}
 binary_vars <- c("Gender", "Policy_Stu", "Minority_Stu", "Poor_Stu")
 
-oor_binary <- edu %>%
-  summarise(across(all_of(binary_vars), ~ sum(!(.x %in% c(1,2))))) %>%
-  pivot_longer(everything(),
-               names_to = "variable",
-               values_to = "n_out_of_range")
+binary <- summarise(
+  edu,
+  across(all_of(binary_vars), ~ sum(!(.x %in% c(1, 2))))
+)
 
-oor_binary
+binary <- pivot_longer(
+  binary,
+  cols = everything(),
+  names_to = "variable",
+  values_to = "n_out_of_range"
+)
+
+binary
+
 ```
 
 ## Likert(1-5)
@@ -86,13 +94,19 @@ likert_1_5 <- c("Time_Friends", "Time_SocicalMedia", "Time_Studying", "GPA",
                 "TrainingCurriculum", "Competitive_Class",
                 "InfuenceF_Friends")
 
-oor_likert <- edu %>%
-  summarise(across(all_of(likert_1_5), ~ sum(!(.x %in% 1:5)))) %>%
-  pivot_longer(everything(),
-               names_to = "variable",
-               values_to = "n_out_of_range")
+likert <- summarise(
+  edu,
+  across(all_of(likert_1_5), ~ sum(!(.x %in% 1:5)))
+)
 
-oor_likert
+likert <- pivot_longer(
+  likert,
+  cols = everything(),
+  names_to = "variable",
+  values_to = "n_out_of_range"
+)
+
+likert
 ```
 :::
 
