@@ -1,8 +1,13 @@
 ---
 title: "Take_Home_Ex01"
 author: "Xi Zixun"
-warning: false
-message: false
+format: 
+  html:
+    toc: true
+    page-layout: full
+execute:    
+  warning: false
+  message: false
 ---
 
 # Take Home Exercise 1 - Exploratory Analysis of Student Academic Performance and University Experience
