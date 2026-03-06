@@ -57,6 +57,15 @@ website:
                 href: "Hands-on_Ex/Hands-on_Ex05/Hands-on_Ex05e.html"
           - text: "Hands On Exercise 6"
             href: "Hands-on_Ex/Hands-on_Ex06/HandsonEx6.html"
+          - section: "Hands On Exercise 7"
+            contents:
+              - text: "Hands On Exercise 7 - Choropleth Mapping with R"
+                href: "Hands-on_Ex/Hands-on_Ex07/Handson_07a.html"
+              - text: "Hands On Exercise 7b - Visualising Geospatial Point Data"
+                href: "Hands-on_Ex/Hands-on_Ex07/Handson_07b.html"
+              - text: "Hands On Exercise 7c - Analytical Mapping"
+                href: "Hands-on_Ex/Hands-on_Ex07/Handson_07c.html"
+
       - section: "Take Home Exercise"
         contents:
             - text: "Take Home Exercise 1"
