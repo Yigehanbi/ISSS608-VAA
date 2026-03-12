@@ -65,6 +65,8 @@ website:
                 href: "Hands-on_Ex/Hands-on_Ex07/Handson_07b.html"
               - text: "Hands On Exercise 7c - Analytical Mapping"
                 href: "Hands-on_Ex/Hands-on_Ex07/Handson_07c.html"
+          - text: "Hands On Exercise 8"
+            href: "Hands-on_Ex/Hands-on_Ex08/Handson08.html"
 
       - section: "Take Home Exercise"
         contents:
