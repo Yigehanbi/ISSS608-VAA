@@ -72,6 +72,8 @@ website:
         contents:
             - text: "Take Home Exercise 1"
               href: "Take_Home_Ex/Take_Home_Ex01/Take_Home_Ex01.html"
+            - text: "Take Home Exercise 2"
+              href: "Take_Home_Ex/Take_Home_Ex02/Takehome2a.html"
       - section: "Lesson Note"
         contents:
           - text: "TBC"
