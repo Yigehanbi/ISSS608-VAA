@@ -4,7 +4,6 @@ format: html
 author: "Xi Zixun"
 ---
 
-
 ## Background
 
 Singapore’s tourism sector experienced a severe shock during the pandemic and entered an uneven recovery phase in the years that followed. Monthly patterns in visitor arrivals, hotel occupancy, length of stay, and the share of the Chinese source market all suggest distinct recovery stages. Static charts alone are insufficient for users who need to explore these structural shifts from multiple perspectives. This project therefore proposes an interactive visual analytics prototype to help users understand how Singapore’s tourism market moved from pandemic shock toward recovery and high-performance states.
@@ -15,7 +14,7 @@ Singapore’s tourism sector experienced a severe shock during the pandemic and 
 
 -   `tidyverse`- A family of modern R packages specially designed to support data science, analysis and communication task including creating static statistical graphs.
 -   `plotly` - R library for plotting interactive statistical graphs.
--   `patchwork` -  combining multiple ggplot2 graphs into one figure.
+-   `patchwork` - combining multiple ggplot2 graphs into one figure.
 -   `GGally` - 'GGally' extends 'ggplot2' by adding several functions to reduce the complexity of combining geometric objects with transformed data
 -   `corrplot` - a visual exploratory tool on correlation matrix that supports automatic variable reordering to help detect hidden patterns among variables.
 -   `readx1` - Graphical scales map data to aesthetics, and provide methods for automatically determining breaks and labels for axes and legends.
@@ -61,10 +60,10 @@ data_clean <- tour %>%
 data_clean %>% count(year, month)
 summary(data_clean)
 ```
+
 ## EDA
 
-### EDA 1 -  Tourism Trends in Singapore
-
+### EDA 1 - Tourism Trends in Singapore
 
 ```{r}
 data_clean$date <- as.Date(data_clean$date)
@@ -110,6 +109,7 @@ ggplotly(eda1, tooltip = "text") %>%
     )
   )
 ```
+
 Before the COVID-19 pandemic, the average number of visitors arriving in Singapore was around 1.5 million per month. However, due to lockdowns and international travel restrictions during the pandemic period, tourism dropped sharply to nearly zero. Since 2022, the tourism sector has gradually recovered. Nevertheless, possibly due to broader economic conditions, the number of visitors arriving in Singapore remains slightly lower than the pre-pandemic level.
 
 ### EDA 2 - China Market Dynamics in Singapore Tourism Recovery
@@ -197,12 +197,10 @@ eda2_combined
 
 
 ```
+
 This analysis compares total visitor arrivals with Chinese visitor arrivals and examines the share of Chinese visitors over time. Prior to the pandemic, Chinese visitors consistently accounted for a substantial portion of Singapore’s tourism demand and moved closely with overall visitor trends. During the COVID-19 shock in 2020–2021, both total and Chinese visitor arrivals declined sharply due to global travel restrictions. In the recovery period after 2022, total visitor arrivals rebounded more rapidly than Chinese visitor arrivals, indicating that Singapore’s tourism recovery was supported by multiple international markets rather than relying solely on the Chinese market.
 
-
 ### EDA 3 - Tourism Demand and Hotel Utilisation
-
-
 
 ```{r}
 ggplot(
@@ -230,7 +228,6 @@ ggplot(
 ```
 
 This analysis examines the relationship between visitor arrivals and hotel occupancy in Singapore. The scatter plot shows a clear positive relationship, where higher visitor arrivals are generally associated with higher hotel occupancy rates. During the COVID-19 shock period, visitor arrivals dropped sharply to near zero due to travel restrictions, while hotel occupancy declined but remained above 40–60%. This suggests that hotel demand was partially supported by domestic staycations or essential travel. As tourism gradually recovered after 2022, both visitor arrivals and hotel occupancy increased, moving closer to pre-pandemic levels. Overall, the results indicate that hotel utilisation closely follows tourism demand.
-
 
 ### EDA 4 - Tourism Demand and Visitor Spending Behaviour
 
