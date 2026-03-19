@@ -67,6 +67,8 @@ website:
                 href: "Hands-on_Ex/Hands-on_Ex07/Handson_07c.html"
           - text: "Hands On Exercise 8"
             href: "Hands-on_Ex/Hands-on_Ex08/Handson08.html"
+          - text: "Hands On Exercise 9"
+            href: "Hands-on_Ex/Hands-on_Ex09/handson09.html"
 
       - section: "Take Home Exercise"
         contents:
